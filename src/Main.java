@@ -63,20 +63,20 @@ public class Main extends Application {
 			aasta.add(i);
 		}
 
-		// loon perioodi alguse choiceboxi + lisan labeli  mis aitab seletada, mida saab choicebox'ist valida
+		// loon perioodi alguse choiceboxi + lisan labeli,  mis aitab seletada, mida saab choicebox'ist valida
 		Label nimi2 = new Label("Vali perioodi algus");
 		paigutus.add(nimi2, 0, 1);
 		cb2 = new ChoiceBox(FXCollections.observableArrayList(aasta));
 		paigutus.add(cb2, 1, 1);
 
-		// loon perioodi lõpu choiceboxi + lisan labeli  mis aitab seletada, mida saab choicebox'ist valida
+		// loon perioodi lõpu choiceboxi + lisan labeli,  mis aitab seletada, mida saab choicebox'ist valida
 		Label nimi3 = new Label("Vali perioodi lõpp");
 		paigutus.add(nimi3, 0, 2);
 		cb3 = new ChoiceBox(FXCollections.observableArrayList(aasta));
 		paigutus.add(cb3, 1, 2);
 
-		//Selleks, et programm reageeriks kliklie lisan Listneri. Listener muudab ära väärtused piirkonna, perioodi alguse ja perioodi
-		//lõpu osas. Kasutan uusi väärtusi graafiku joonistamisel
+		//Selleks, et programm reageeriks kliklie lisan listeneri. Salvestan uued väärtused piirkonna, perioodi alguse ja perioodi
+		//lõpu kohta muutujatesse. Kasutan uusi väärtusi graafiku joonistamisel
 		cb.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 			piirkond = (String) newValue;
 		});
@@ -89,7 +89,7 @@ public class Main extends Application {
 			lopp = (int) newValue;
 		});
 
-		//Lisan nupu, mida vajutades vahetab programm stseeni ning joonistab graafiku
+		//Lisan nupu, mida vajutades vahetab programm akna ning joonistatakse graafik
 		Button nupp = new Button();
 		nupp.setText("Joonista graafik");
 		paigutus.add(nupp, 3, 5);
@@ -97,11 +97,11 @@ public class Main extends Application {
 		nupp.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				// kui valitud perioodi algus on perioodi lõpust hilisem, siis annab veateate
+				// kui valitud perioodi algus on perioodi lõpust hilisem, siis annab programm veateate
 				if (lopp<algus) {
 					annaveateade ();
 				} else {
-					// kui perioodi algus ja lõpp on loogiliselt sisestatud joonistab graafiku
+					// kui perioodi algus ja lõpp on loogiliselt sisestatud, joonistatakse graafik
 					joonistagraafik();
 				}
 
@@ -109,7 +109,7 @@ public class Main extends Application {
 		});
 
 	}
-	// Lisan veateate stseeni
+	// Lisan veateate akna
 	private void annaveateade() {
 		StackPane layout = new StackPane();
 		Scene vaade2 = new Scene(layout,600, 200);
@@ -118,7 +118,7 @@ public class Main extends Application {
 		layout.getChildren().add(veateade);
 		layout.setAlignment(veateade, Pos.TOP_CENTER);
 
-		//lisan nupu, mille vajutamisel liigutakse tagasi eelmisele stseenile, kus saab uuesti valida perioodi alguse ja lõpu
+		//lisan nupu, mille vajutamisel liigutakse tagasi eelmisele aknale, kust saab uuesti valida perioodi alguse ja lõpu
 		Button nupp2 = new Button();
 		nupp2.setText("Sisesta perioodi algus ja lõpp uuesti");
 		layout.getChildren().add(nupp2);
@@ -133,7 +133,7 @@ public class Main extends Application {
 		});
 
 	}
-	//seadistan graafiku joonistamise stseeni, paigutuse ja muu vajaliku
+	//seadistan graafiku joonistamise akna, paigutuse ja muu vajaliku
 	private void joonistagraafik() {
 		StackPane layout = new StackPane();
 		Scene vaade3 = new Scene(layout,600, 600);
